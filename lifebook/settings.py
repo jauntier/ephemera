@@ -289,6 +289,7 @@ INSTALLED_APPS = [
     'channels',
     'corsheaders',
     'custom_filters',
+    
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -371,6 +372,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'lifebook.urls'
