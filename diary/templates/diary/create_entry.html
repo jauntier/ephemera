@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h2>Create Entry</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<!-- Fabric.js for canvas editing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
+<canvas id="c" width="800" height="600"></canvas>
+<script>
+    var canvas = new fabric.Canvas('c');
+    // Add stickers, text overlays, and drawings logic here
+</script>
+
+{% endblock %}
+
+
+
+
+

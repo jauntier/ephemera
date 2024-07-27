@@ -1,0 +1,90 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<head><style>
+  .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffe6e6;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-header {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .profile-avatar {
+      max-width: 150px;
+      border-radius: 50%;
+      border: 3px solid #7b1e1e;
+      margin: 20px auto;
+  }
+
+  .profile-details dl {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .profile-details dt {
+      font-weight: bold;
+      margin-right: 10px;
+      color: #7b1e1e;
+  }
+
+  .profile-details dd {
+      margin: 0 20px 10px 0;
+      color: #7b1e1e;
+  }
+
+  .profile-details dt, .profile-details dd {
+      font-family: "Varela Round", sans-serif;
+  }
+
+  .edit-profile-link {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .edit-profile-link a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #7b1e1e;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
+
+  .edit-profile-link a:hover {
+      background-color: #5a1616;
+  }
+</style>
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>{{ profile.user.username }}'s Profile</h2>
+        
+    </div>
+
+    <div class="profile-details">
+        <dl>
+            <dt>Username</dt>
+            <dd>{{ profile.user.username }}</dd>
+            <dt>Bio</dt>
+            <dd>{{ profile.bio }}</dd>
+            <dt>Email</dt>
+            <dd>{{ profile.user.email }}</dd>
+        </dl>
+    </div>
+    <div class="edit-profile-link">
+        <a href="{% url 'edit_profile' %}">Edit Bio</a>
+        <a href="{% url 'account_change_password' %}">Change password</a>
+    </div>
+</div></body>
+{% endblock %}

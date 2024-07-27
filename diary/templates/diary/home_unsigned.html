@@ -1,0 +1,202 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<head><style>body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    background-image: url('logo.png');
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+    }
+
+nav a:hover {
+    background-color: #555;
+}
+
+.container {
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);    
+    flex: 1;
+}
+
+h1, h2, h3 {
+    margin: 20px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    
+}
+
+.contact-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+}
+
+
+.excerpt {
+    border: 2px solid #ddd; 
+    border-radius: 8px;
+    padding: 20px; 
+    margin-bottom: 20px; 
+    background-color: #fff; 
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  td {
+    padding: 10px 15px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  td.amount {
+    text-align: right;
+  }
+nav {
+    background-color: grey;
+}  
+
+.blogs {
+    border: 2px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    background-color: #fff; 
+    text-decoration: none;
+}
+
+
+.aesthetic-paragraph {
+    font-family: "Helvetica Neue", Arial, sans-serif; 
+    font-size: 18px; 
+    line-height: 1.6;
+    color: #333; 
+    padding: 20px; 
+    margin: 0;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    
+}
+
+  .aesthetic-paragraph:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  /* CSS for aesthetically pleasing definition list */
+.aesthetic-dl {
+  font-family: "Arial", sans-serif; /* Use a clean and widely supported font */
+  font-size: 16px; /* Set a comfortable font size */
+  color: #333; /* Set text color to a dark shade for readability */
+}
+
+.aesthetic-dt {
+  font-weight: bold; /* Make definition terms bold for emphasis */
+  margin-top: 10px; /* Add space above each definition term */
+}
+
+.aesthetic-dd {
+  margin-bottom: 15px; /* Add space below each definition detail */
+  margin-left: 20px; /* Indent definition details for visual separation */
+  color: #666; /* Use a slightly darker color for definition details */
+}
+
+/* Optional: Add a subtle border and padding for definition list */
+.aesthetic-dl {
+  border: 1px solid #ccc; /* Add a border around the definition list */
+  border-radius: 5px; /* Add rounded corners for a softer look */
+  padding: 15px; /* Add padding to the definition list */
+}
+
+/* Hover effect for definition terms */
+.aesthetic-dt:hover {
+  color: #007bff; /* Change text color on hover for interactive effect */
+}</style></head>
+<body>
+<h2>Welcome to Lifebook</h2>
+<p class="aesthetic-paragraph">This is the home page.</p>
+
+<dl class="aesthetic-dl">
+    <dt class="aesthetic-dt">Feature 1</dt>
+    <dd class="aesthetic-dd">Description of feature 1.</dd>
+    <dt class="aesthetic-dt">Feature 2</dt>
+    <dd class="aesthetic-dd">Description of feature 2.</dd>
+    <dt class="aesthetic-dt">Feature 3</dt>
+    <dd class="aesthetic-dd">Description of feature 3.</dd>
+</dl>
+
+<p class="aesthetic-paragraph">Explore the site to find out more about what we offer.</p>
+</body>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+{% load custom_tags %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+  <h2>Search Results</h2>
+  <ul>
+    {% for user in results %}
+      <li>
+        <a href="{% url 'friend_entries' user.id %}">
+          {{ user.username }}</a>
+          {% if user.profile in request.user.profile.friends.all %}
+            <span>Already Friends</span>
+          {% elif request.user|has_sent_friend_request:user %}
+            <span>Friend Request Sent</span>
+          {% elif request.user|has_received_friend_request:user %}
+            <form method="post" action="{% url 'accept_friend_request' user.id %}">
+              {% csrf_token %}
+              <button type="submit">Accept Friend Request</button>
+            </form>
+          {% else %}
+            <form method="post" action="{% url 'send_friend_request' user.id %}">
+              {% csrf_token %}
+              <button type="submit">Send Friend Request</button>
+            </form>
+          {% endif %}
+        
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<head><style>
+  .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffe6e6;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-header {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .profile-avatar {
+      max-width: 150px;
+      border-radius: 50%;
+      border: 3px solid #7b1e1e;
+      margin: 20px auto;
+  }
+
+  .profile-details dl {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .profile-details dt {
+      font-weight: bold;
+      margin-right: 10px;
+      color: #7b1e1e;
+  }
+
+  .profile-details dd {
+      margin: 0 20px 10px 0;
+      color: #7b1e1e;
+  }
+
+  .profile-details dt, .profile-details dd {
+      font-family: "Varela Round", sans-serif;
+  }
+
+  .edit-profile-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .edit-profile-form label {
+      color: #7b1e1e;
+      font-family: "Varela Round", sans-serif;
+  }
+
+  .edit-profile-form input, .edit-profile-form textarea {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #7b1e1e;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 400px;
+  }
+
+  .edit-profile-form button {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #7b1e1e;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+  }
+
+  .edit-profile-form button:hover {
+      background-color: #5a1616;
+  }
+</style>
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>Edit Bio</h2>
+    </div>
+    <form method="post" enctype="multipart/form-data" class="edit-profile-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+</div>
+</body>
+{% endblock %}

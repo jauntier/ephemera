@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
+    <style>
+        .body {
+            font-family: "Varela Round", sans-serif;
+            background-color: rgba(255, 199, 199, 0.8);
+            color: #7b1e1e;
+            line-height: 1.6;
+            background-image: url('check.jpg');
+            background-position: center;
+            background-repeat: round;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #7b1e1e;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            
+            background-color: #8a2c2c;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav a:hover {
+            background-color: #a94444;
+        }
+
+        .container {
+            margin: auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .h1, .h2, .h3 {
+            margin: 10px 0;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .p {
+            margin-bottom: 10px;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .btn {
+            background-color: #7b1e1e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #a94444;
+        }
+
+        .footer {
+            background-color: #7b1e1e;
+            color: #fff;
+            text-align: left;
+            padding: 20px;
+            font-family: "Varela Round", sans-serif;
+        }
+
+        .excerpt {
+            border: 2px solid #d9a7a7;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .h2 {
+            font-family: 'Varela Round', sans-serif;
+            text-decoration: underline;
+        }
+
+        .linkx {
+            margin-top: 1px;
+            padding: 60px;
+            text-decoration: none;
+            color: #f0f0f0;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 1.6em;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        }
+
+        .aesthetic-paragraph {
+            font-family: "Varela Round", sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #7b1e1e;
+            padding: 10px;
+            margin: 0;
+            border-radius: 10px;
+        }
+
+        .title {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+           
+            
+        }
+
+        .h2x {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+            margin-top: 10px;
+            border-radius: 60px;
+            border: 2px lightblue solid;
+            background-color: #36454F;
+        }
+
+        /* New Card Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Creates four equal columns */
+            gap: 20px; /* Adjust the gap between the cards */
+            justify-items: center; /* Centers the items within each grid cell */
+        }
+
+        .card {
+            background-color: #ffcccc;
+            border: 1px solid #7b1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            text-decoration: none;
+            color: #7b1e1e;
+        }
+
+        .card h3 {
+            font-family: 'Varela Round', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-family: 'Varela Round', sans-serif;
+            color: #7b1e1e;
+        }
+
+        /* Search Bar Styles */
+       
+    </style>
+</head>
+<body class="body">
+    <header class="header">
+        <h1 class="title">Ephemera</h1>
+        
+        <nav class="nav">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'entry_list' %}">My Entries</a>
+            <a href="{% url 'profile_view' %}">Profile</a>
+            <a href="{% url 'account_logout' %}">Logout</a>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+            <p class="aesthetic-paragraph">Welcome to Ephemera! Illustrate your history through memorabilia that you can store on your personal online scrapbook.</p>
+            <dl class="aesthetic-dl">
+                <dt class="aesthetic-dt">Home</dt>
+                <dd class="aesthetic-dd">Navigate to the home page to see the latest updates and news.</dd>
+                <dt class="aesthetic-dt">My Entries</dt>
+                <dd class="aesthetic-dd">View and manage your personal entries.</dd>
+                <dt class="aesthetic-dt">Profile</dt>
+                <dd class="aesthetic-dd">View and update your profile information.</dd>
+                <dt class="aesthetic-dt">Logout</dt>
+                <dd class="aesthetic-dd">Sign out of your account securely.</dd>
+            </dl>
+            <p class="aesthetic-paragraph">Explore and make the most out of the features available. If you have any questions, visit the profile section to contact support.</p>
+        {% endblock %}
+    </main>
+   
+    <footer class="footer">
+        <p>&copy; 2024 Ephemera</p>
+    </footer>
+</body>
+</html>

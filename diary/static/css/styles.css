@@ -1,0 +1,9 @@
+.body {
+  background-image: url('/static/images/check.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  
+ 
+  line-height: 1.6;
+}

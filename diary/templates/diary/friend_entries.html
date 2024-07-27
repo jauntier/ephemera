@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ friend.username }}'s Entries{% endblock %}
+
+{% block content %}
+  <h2>{{ friend.username }}'s Entries</h2>
+  <ul>
+    {% for entry in entries %}
+      <li>
+        <p>{{ entry.text }}</p>
+        <p>{{ entry.created_at }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
