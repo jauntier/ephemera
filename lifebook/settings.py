@@ -286,34 +286,34 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'cloudinary',
     'cloudinary_storage',
-    'channels',
+    'daphne',
     'corsheaders',
     'custom_filters',
     
 ]
 
-DEFAULT_CHANNEL_LAYER = "lifebook\\envi\\Lib\\site-packages\\channels\\layers.py"
 
 
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
-    },
-}
+
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels.layers.InMemoryChannelLayer',
+#     },
+# }
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 ASGI_APPLICATION = 'lifebook.asgi.application'
 
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             'hosts': [('127.0.0.1', 6379)],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
