@@ -74,6 +74,9 @@ from cloudinary.models import CloudinaryField
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 
+
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)

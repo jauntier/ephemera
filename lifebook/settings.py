@@ -292,6 +292,15 @@ INSTALLED_APPS = [
     
 ]
 
+DEFAULT_CHANNEL_LAYER = "lifebook\envi\Lib\site-packages\channels\layers.py"
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 ASGI_APPLICATION = 'lifebook.asgi.application'
