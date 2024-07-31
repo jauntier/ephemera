@@ -270,6 +270,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -286,7 +287,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'cloudinary',
     'cloudinary_storage',
-    'daphne',
+    
     'corsheaders',
     'custom_filters',
     
@@ -450,4 +451,3 @@ STATICFILES_DIRS = [BASE_DIR / "diary/static"]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
