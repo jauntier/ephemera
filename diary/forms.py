@@ -1,5 +1,5 @@
 from django import forms
-from .models import Entry, Profile, FriendRequest
+from .models import Entry, FriendRequest, User
 
 class EntryForm(forms.ModelForm):
     class Meta:
@@ -13,5 +13,5 @@ class FriendRequestForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = User
         fields = ['bio']

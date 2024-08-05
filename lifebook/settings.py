@@ -354,9 +354,18 @@ cloudinary.config(
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# DATABASES = {
+#     "default": dj_database_url.parse("postgresql://adrian_user:NdDfYYQjDzQLDuAd8S9Iqy36EznkxrCU@dpg-cqie9n8gph6c738nsg80-a.oregon-postgres.render.com/adrian")
+# }
+
 DATABASES = {
-    "default": dj_database_url.parse("postgresql://adrian_user:NdDfYYQjDzQLDuAd8S9Iqy36EznkxrCU@dpg-cqie9n8gph6c738nsg80-a.oregon-postgres.render.com/adrian")
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+AUTH_USER_MODEL = "diary.User"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -446,6 +455,10 @@ STATIC_URL = 'static/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [BASE_DIR / "diary/static"]
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'diary/media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
