@@ -64,14 +64,7 @@ cloudinary.config(
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ephemeradb',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    "default": dj_database_url.parse("postgresql://adrian_96ck_user:DyFLRO82Y7XPVzXisCfMmF5RV07rdumV@dpg-cr2vmf88fa8c73c2uo60-a.frankfurt-postgres.render.com/adrian_96ck")
 }
 
 AUTH_USER_MODEL = "diary.User"

@@ -7,60 +7,118 @@
 {% endblock %}
 
 {% block script %}
-    <script type"text/javascript" src="{% static 'network/signup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'network/signup.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-    <div class="user-box" style="margin-top: 6vh; background-color: #f8f9fa; padding: 2rem; border-radius: 10px;">
-        <div>
-            <center>
-                <h3 style="color: #7b1e1e;">Sign up for Network</h2><br>
-            </center>
+<style>.signup-container {
+    font-family: 'Varela Round', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.user-box {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.signup-header {
+    color: #7b1e1e;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.inp {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.inp:focus {
+    outline: none;
+    border-color: #7b1e1e;
+    box-shadow: 0 0 5px rgba(123, 30, 30, 0.5);
+}
+
+.signup-btn {
+    margin-top: 10px;
+    width: 95%;
+    background-color: #7b1e1e;
+    border: none;
+    padding: 0.75rem;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.signup-btn:enabled {
+    cursor: pointer;
+}
+
+.login-link {
+    color: #7b1e1e;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+</style>
+<div class="signup-container">
+    <div class="user-box">
+        <div class="text-center">
+            <h3 class="signup-header">Sign up for Network</h3><br>
         </div>
     
-        <form action="{% url 'register' %}" method="post" id="signin-form" style="width: 100%; margin-bottom: 5vh;" enctype="multipart/form-data">
+        <form action="{% url 'register' %}" method="post" id="signin-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <div class="form-row align-items-center">
-                <div class="col-sm-6 my-1">
-                    <input class="form-control inp fname" type="text" name="firstname" placeholder="First Name *" autocomplete="off" autofocus>
-                    <span class="star small"></span>
+                <div class="form-row">
+                    <div class="col-sm-6 my-1">
+                        <input class="inp fname" type="text" name="firstname" placeholder="First Name *" autocomplete="off" autofocus>
+                        <span class="star small"></span>
+                    </div>
+                    <div class="col-sm-6 my-1">
+                        <input class="inp lname" type="text" name="lastname" placeholder="Last Name *" autocomplete="off">
+                        <span class="star small"></span>
+                    </div>
                 </div>
-                <div class="col-sm-6 my-1">
-                    <input class="form-control inp lname" type="text" name="lastname" placeholder="Last Name *" autocomplete="off">
-                    <span class="star small"></span>
-                </div>
-            </div>
             </div>
             <div class="form-group">
-                <input class="form-control inp usrname" type="text" name="username" placeholder="Username *" autocomplete="off">
+                <input class="inp usrname" type="text" name="username" placeholder="Username *" autocomplete="off">
                 <span class="star small">{{message}}</span>
             </div>
             <div class="form-group">
-                <input class="form-control inp email" type="email" name="email" placeholder="Email Address *" autocomplete="off">
+                <input class="inp email" type="email" name="email" placeholder="Email Address *" autocomplete="off">
                 <span class="star small"></span>
             </div>
             <div class="form-group">
-                <input class="form-control inp pswd" type="password" name="password" placeholder="Password *" autocomplete="off">
+                <input class="inp pswd" type="password" name="password" placeholder="Password *" autocomplete="off">
                 <span class="star small"></span>
             </div>
             <div class="form-group">
-                <input class="form-control inp cpswd" type="password" name="confirmation" placeholder="Confirm Password *" autocomplete="off">
+                <input class="inp cpswd" type="password" name="confirmation" placeholder="Confirm Password *" autocomplete="off">
                 <span class="star small"></span>
             </div>
-            
+            <div class="text-center">
+                <input class="btn-primary signup-btn" style="background-color: #7b1e1e;" type="submit" value="Sign Up" disabled>
             </div>
-
-
-            <center>
-                <input class="btn btn-primary" type="submit" value="Sign Up" style="margin-top: 10px; width: 95%; background-color: #7b1e1e; border: none;" disabled>
-            </center>
         </form>
     
-        <div>
-            <center>
-                Already have an account?&nbsp;&nbsp;<a href="{% url 'login' %}" style="color: #7b1e1e;">Log in</a>
-            </center>
+        <div class="text-center mt-3">
+            Already have an account?&nbsp;&nbsp;<a href="{% url 'login' %}" class="login-link">Log in</a>
         </div><br><br>
     </div>
+</div>
 {% endblock %}

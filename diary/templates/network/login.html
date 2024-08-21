@@ -7,46 +7,127 @@
 {% endblock %}
 
 {% block body %}
-    <div class="user-box" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px;">
-        <div>
-            <center>
-                <h3 style="color: #7b1e1e;">Log in to Network</h3><br>
-            </center>
-        </div>
-    
-        <form action="{% url 'login' %}" method="post" id="signin-form" style="width: 100%; margin-bottom: 5vh;">
-            {% csrf_token %}
-            <div class="form-group">
-                <input type="text" name="username" placeholder="Username" autocomplete="off" autofocus>
-            </div>
-            <div class="form-group">
-                <input class="form-control inp pswd" type="password" name="password" placeholder="Password" autocomplete="off">
-                <span class="star"><small>{{message}}</small></span>
-            </div>
-            <center>
-                <input class="btn-primary" type="submit" value="Log in" style="margin-top: 10px; width: 95%; background-color: #7b1e1e; border: none;" disabled>
-            </center>
-        </form>
-    
-        <div>
-            <center>
-                Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}" style="color: #7b1e1e;">Sign Up</a>
-            </center>
-        </div>
+<style>
+    body {
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .user-box {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        color: #7b1e1e;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .inp {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    .inp:focus {
+        border-color: #7b1e1e;
+        outline: none;
+        box-shadow: 0 0 5px rgba(123, 30, 30, 0.2);
+    }
+
+    .star small {
+        color: red;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .btn-primary {
+        margin-top: 10px;
+        width: 100%;
+        background-color: #7b1e1e;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:disabled {
+        background-color: #d9d9d9;
+        cursor: not-allowed;
+    }
+
+    .btn-primary:hover:enabled {
+        background-color: #9c2e2e;
+    }
+
+    .signup-link {
+        color: #7b1e1e;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .signup-link:hover {
+        color: #9c2e2e;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .mt-5 {
+        margin-top: 5vh;
+    }
+</style>
+
+<div class="user-box">
+    <div class="text-center">
+        <h3>Log in to Network</h3>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".inp").forEach(input => {
-                input.addEventListener('input', () => {
-                    if ((document.querySelector('.usrnm').value.length === 0) || (document.querySelector('.pswd').value.length === 0)) {
-                        document.querySelector('input[type="submit"]').disabled = true;
-                    }
-                    else {
-                        document.querySelector('input[type="submit"]').disabled = false;
-                    }
-                });
+    <form action="{% url 'login' %}" method="post" id="signin-form" class="mt-5">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="inp usrnm" type="text" name="username" placeholder="Username" autocomplete="off" autofocus>
+        </div>
+        <div class="form-group">
+            <input class="inp pswd" type="password" name="password" placeholder="Password" autocomplete="off">
+            <span class="star"><small>{{ message }}</small></span>
+        </div>
+        <div class="text-center">
+            <input class="btn-primary" type="submit" value="Log in" disabled>
+        </div>
+    </form>
+
+    <div class="text-center">
+        Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}" class="signup-link">Sign Up</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".inp").forEach(input => {
+            input.addEventListener('input', () => {
+                if (document.querySelector('.usrnm').value.length === 0 || document.querySelector('.pswd').value.length === 0) {
+                    document.querySelector('input[type="submit"]').disabled = true;
+                } else {
+                    document.querySelector('input[type="submit"]').disabled = false;
+                }
             });
         });
-    </script>
+    });
+</script>
 {% endblock %}
