@@ -31,7 +31,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from diary import views as diary_views
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('', diary_views.home, name='home'),
@@ -42,5 +42,3 @@ urlpatterns = [
 ]
 
 
-
-urlpatterns += staticfiles_urlpatterns()

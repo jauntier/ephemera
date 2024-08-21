@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block body %}
+
     <div class="main-div">
         <div class="left-div">
             <nav class="head heading">
@@ -14,6 +15,8 @@
                     Saved
                 {% elif page == 'profile' %}
                     Profile
+                {% elif page == 'scrapbook' %}
+                    Scrapbook
                 {% else %}
                     Explore
                 {% endif %}

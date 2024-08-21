@@ -7,35 +7,33 @@
 {% endblock %}
 
 {% block body %}
-    <div class="user-box">
+    <div class="user-box" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px;">
         <div>
             <center>
-                <img src="{% static 'network/Images/logo_icon.png' %}" height="45em" style="margin-bottom: 2vh;">
-                <h3>Log in to Network</h3><br>
+                <h3 style="color: #7b1e1e;">Log in to Network</h3><br>
             </center>
         </div>
     
-        <form action="{% url 'login' %}" method="post" id="signin-form" style="width: 100%;margin-bottom: 5vh;">
+        <form action="{% url 'login' %}" method="post" id="signin-form" style="width: 100%; margin-bottom: 5vh;">
             {% csrf_token %}
             <div class="form-group">
-                <input class="form-control inp usrnm" type="text" name="username" placeholder="Username" autocomplete="off" autofocus>
+                <input type="text" name="username" placeholder="Username" autocomplete="off" autofocus>
             </div>
             <div class="form-group">
                 <input class="form-control inp pswd" type="password" name="password" placeholder="Password" autocomplete="off">
                 <span class="star"><small>{{message}}</small></span>
             </div>
             <center>
-                <input class="btn btn-primary" type="submit" value="Log in" style="margin-top: 10px; width: 95%;" disabled>
+                <input class="btn-primary" type="submit" value="Log in" style="margin-top: 10px; width: 95%; background-color: #7b1e1e; border: none;" disabled>
             </center>
         </form>
     
         <div>
             <center>
-                Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a>
+                Don't have an account?&nbsp;&nbsp;<a href="{% url 'register' %}" style="color: #7b1e1e;">Sign Up</a>
             </center>
         </div>
     </div>
-
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -52,7 +50,3 @@
         });
     </script>
 {% endblock %}
-
-
-
-

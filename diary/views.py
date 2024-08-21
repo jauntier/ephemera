@@ -27,8 +27,8 @@ def create_entry(request):
         if form.is_valid():
             entry = form.save(commit=False)
             entry.user = request.user
-            sentiment = analyze_sentiment(entry.text)
-            entry.mood = sentiment['compound']  # This can be refined further
+            # sentiment = analyze_sentiment(entry.text)
+            # entry.mood = sentiment['compound']  # This can be refined further
             entry.save()
             return redirect('entry_list')
     else:
@@ -220,26 +220,38 @@ def register(request):
 
 
 
+from django.core.exceptions import ObjectDoesNotExist
+
 def profile(request, username):
     user = User.objects.get(username=username)
     all_posts = Post.objects.filter(creater=user).order_by('-date_created')
     paginator = Paginator(all_posts, 10)
     page_number = request.GET.get('page')
-    if page_number == None:
+    if page_number is None:
         page_number = 1
     posts = paginator.get_page(page_number)
     followings = []
     suggestions = []
     follower = False
+
     if request.user.is_authenticated:
         followings = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
         suggestions = User.objects.exclude(pk__in=followings).exclude(username=request.user.username).order_by("?")[:6]
 
-        if request.user in Follower.objects.get(user=user).followers.all():
-            follower = True
+        try:
+            follower_obj = Follower.objects.get(user=user)
+            if request.user in follower_obj.followers.all():
+                follower = True
+        except ObjectDoesNotExist:
+            follower = False
+
+    try:
+        follower_count = Follower.objects.get(user=user).followers.all().count()
+    except ObjectDoesNotExist:
+        follower_count = 0
     
-    follower_count = Follower.objects.get(user=user).followers.all().count()
     following_count = Follower.objects.filter(followers=user).count()
+
     return render(request, 'network/profile.html', {
         "username": user,
         "posts": posts,
@@ -296,7 +308,8 @@ def saved(request):
 def create_post(request):
     if request.method == 'POST':
         text = request.POST.get('text')
-        pic = request.FILES.get('picture')
+        pic = request.FILES.get('content_image')  # Match the form field name
+        print(f"Text: {text}, Picture: {pic}")  # Debugging line
         try:
             post = Post.objects.create(creater=request.user, content_text=text, content_image=pic)
             return HttpResponseRedirect(reverse('index'))
@@ -304,6 +317,7 @@ def create_post(request):
             return HttpResponse(e)
     else:
         return HttpResponse("Method must be 'POST'")
+
 
 @login_required
 @csrf_exempt

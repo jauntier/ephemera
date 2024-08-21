@@ -336,10 +336,10 @@ function follow_user(element, username, origin) {
     })
     .then(() => {
         if(origin === 'suggestion') {
-            element.parentElement.innerHTML = `<button class="btn btn-success" type="button" onclick="unfollow_user(this,'${username}','suggestion')">Following</button>`;
+            element.parentElement.innerHTML = `<button style="background-color: #7b1e1e; color: white; border-color: #7b1e1e;"  type="button" onclick="unfollow_user(this,'${username}','suggestion')">Following</button>`;
         }
         else if(origin === 'edit_page') {
-            element.parentElement.innerHTML = `<button class="btn btn-success float-right" onclick="unfollow_user(this,'${username}','edit_page')" id="following-btn">Following</button>`;
+            element.parentElement.innerHTML = `<button style="background-color: #7b1e1e; color: white; border-color: #7b1e1e; float:right;"  onclick="unfollow_user(this,'${username}','edit_page')" >Following</button>`;
         }
         else if(origin === 'dropdown') {
             ////////////////////////////////////////////////////////////////////////////////////////////
@@ -368,10 +368,10 @@ function unfollow_user(element, username, origin) {
     })
     .then(() => {
         if(origin === 'suggestion') {
-            element.parentElement.innerHTML = `<button class="btn btn-outline-success" type="button" onclick="follow_user(this,'${username}','suggestion')">Follow</button>`;
+            element.parentElement.innerHTML = `<button style="background-color: #7b1e1e; color: white; border-color: #7b1e1e;" type="button" onclick="follow_user(this,'${username}','suggestion')">Follow</button>`;
         }
         else if(origin === 'edit_page') {
-            element.parentElement.innerHTML = `<button class="btn btn-outline-success float-right" onclick="follow_user(this,'${username}','edit_page')" id="follow-btn">Follow</button>`;
+            element.parentElement.innerHTML = `<button style="background-color: #7b1e1e; color: white; border-color: #7b1e1e; float:right;" onclick="follow_user(this,'${username}','edit_page')" id="follow-btn">Follow</button>`;
         }
         else if(origin === 'dropdown') {
             ///////////////////////////////////////////////////////////////////////////////////////////

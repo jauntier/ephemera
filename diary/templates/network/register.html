@@ -11,15 +11,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="user-box" style="margin-top: 6vh;">
+    <div class="user-box" style="margin-top: 6vh; background-color: #f8f9fa; padding: 2rem; border-radius: 10px;">
         <div>
             <center>
-                <img src="{% static 'network/Images/logo_icon.png' %}" height="45em" style="margin-bottom: 2vh;">
-                <h3>Sign up for Network</h2><br>
+                <h3 style="color: #7b1e1e;">Sign up for Network</h2><br>
             </center>
         </div>
     
-        <form action="{% url 'register' %}" method="post" id="signin-form" style="width: 100%;margin-bottom: 5vh;"  enctype="multipart/form-data">
+        <form action="{% url 'register' %}" method="post" id="signin-form" style="width: 100%; margin-bottom: 5vh;" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <div class="form-row align-items-center">
@@ -49,30 +48,18 @@
                 <input class="form-control inp cpswd" type="password" name="confirmation" placeholder="Confirm Password *" autocomplete="off">
                 <span class="star small"></span>
             </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <input type="file" name="profile" class="form-control custom-file-input" id="profile" accept="image/jpeg,image/png,image/webp,image/gif" data-focusable="true" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="profile"><span style="color: #6c757d;">Choose profile picture<span></label>
-                    <span class="star small"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <input type="file" name="cover" class="form-control custom-file-input" id="cover" accept="image/jpeg,image/png,image/webp,image/gif" data-focusable="true" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="cover"><span style="color: #6c757d;">Choose cover picture<span></label>
-                    <span class="star small"></span>
-                </div>
+            
             </div>
 
 
             <center>
-                <input class="btn btn-primary" type="submit" value="Sign Up" style="margin-top: 10px; width: 95%;" disabled>
+                <input class="btn btn-primary" type="submit" value="Sign Up" style="margin-top: 10px; width: 95%; background-color: #7b1e1e; border: none;" disabled>
             </center>
         </form>
     
         <div>
             <center>
-                Already have an account?&nbsp;&nbsp;<a href="{% url 'login' %}">Log in</a>
+                Already have an account?&nbsp;&nbsp;<a href="{% url 'login' %}" style="color: #7b1e1e;">Log in</a>
             </center>
         </div><br><br>
     </div>

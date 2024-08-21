@@ -78,6 +78,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
 
 
 # class Profile(models.Model):
@@ -109,7 +110,7 @@ class User(AbstractUser):
 # Entry model
 class Entry(models.Model):
     privacy = models.CharField(max_length=10, choices=[('public', 'Public'), ('private', 'Private')], default='private')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(blank=True)
     photo = CloudinaryField('image', blank=True, resource_type='image')
     video = CloudinaryField('video', blank=True, resource_type='video')
@@ -121,7 +122,7 @@ class Entry(models.Model):
 
 # Notification model
 class Notification(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -140,8 +141,8 @@ def get_notifications(user):
 # FriendRequest model
 class FriendRequest(models.Model):
    
-    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_requests')
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='received_requests',)
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_requests')
+    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_requests',)
     timestamp = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=[('pending', 'Pending'), ('accepted', 'Accepted'), ('declined', 'Declined')], default='pending')
 
@@ -156,12 +157,12 @@ class FriendRequest(models.Model):
         self.save()
 
 class Post(models.Model):
-    creater = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts')
+    creater = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     date_created = models.DateTimeField(default=timezone.now)
     content_text = models.TextField(max_length=140, blank=True)
-    content_image = models.ImageField(upload_to='posts/', blank=True)
-    likers = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True , related_name='likes')
-    savers = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True , related_name='saved')
+    content_image = models.ImageField(upload_to='posts/', blank=True, null=True) 
+    likers = models.ManyToManyField(User, blank=True , related_name='likes')
+    savers = models.ManyToManyField(User,blank=True , related_name='saved')
     comment_count = models.IntegerField(default=0)
 
     def __str__(self):
@@ -191,8 +192,8 @@ class Comment(models.Model):
         }
     
 class Follower(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followers')
-    followers = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='following')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers')
+    followers = models.ManyToManyField(User, blank=True, related_name='following')
 
     def __str__(self):
         return f"User: {self.user}"

@@ -6,10 +6,6 @@
     <h2 class="h2" style="margin-top: -2px; margin-bottom:2px;">Welcome to Ephemera!</h2>
     <p class="aesthetic-paragraph" style="margin-bottom:17px;">Illustrate your history through memorabilia that you can store on your very own digital scrapbook.</p>
     <div class="card-container" style="margin-bottom:17px;">
-        <a href="{% url 'home' %}" class="card">
-            <h3>Home</h3>
-            <p>Navigate to the home page to see the latest updates and news.</p>
-        </a>
         <a href="{% url 'entry_list' %}" class="card">
             <h3>My Entries</h3>
             <p>View and manage your personal entries.</p>
@@ -17,6 +13,10 @@
         <a href="{% url 'profile_view' %}" class="card">
             <h3>Profile</h3>
             <p>View and update your profile information.</p>
+        </a>
+        <a href="{% url 'index' %}" class="card">
+            <h3>Timeline</h3>
+            <p>Share your ephemera and see other users' ephemera.</p>
         </a>
         <a href="{% url 'account_logout' %}" class="card">
             <h3>Logout</h3>

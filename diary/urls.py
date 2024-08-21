@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -35,4 +37,9 @@ urlpatterns = [
     path("<str:username>/follow", views.follow, name="followuser"),
     path("<str:username>/unfollow", views.unfollow, name="unfollowuser"),
     path("n/post/<int:post_id>/edit", views.edit_post, name="editpost")
-]
+] 
+
+
+
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

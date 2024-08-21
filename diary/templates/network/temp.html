@@ -6,7 +6,7 @@
 
 {% block body %}
 
-    <h2>Sign Up</h2>
+    <h2 style="color: #7b1e1e;">Sign Up</h2>
 
     {% if message %}
         <div>{{ message }}</div>
@@ -28,11 +28,11 @@
         </div>
         <div class="custom-file mb-3">
             <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile">Choose file</label>
+            <label class="custom-file-label" for="customFile"><span style="color: #7b1e1e;">Choose file</span></label>
         </div>
-        <input class="btn btn-primary" type="submit" value="Register">
+        <input class="btn btn-primary" type="submit" value="Register" style="background-color: #7b1e1e; border: none;">
     </form>
 
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    Already have an account? <a href="{% url 'login' %}" style="color: #7b1e1e;">Log In here.</a>
 
 {% endblock %}
